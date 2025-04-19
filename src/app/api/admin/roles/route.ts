@@ -53,7 +53,7 @@ const defaultRolePermissions = {
 
 // In a real application, these would be stored in a database
 // For now, we'll use this variable to simulate persistence
-export let rolePermissions = { ...defaultRolePermissions };
+export const rolePermissions = { ...defaultRolePermissions };
 
 export async function GET() {
   try {

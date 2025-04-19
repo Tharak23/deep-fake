@@ -8,11 +8,18 @@ import Footer from '@/components/Footer';
 import { FiRefreshCw, FiLoader, FiAlertCircle, FiCheck, FiList, FiTag, FiCalendar } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
+interface FetchResult {
+  message: string;
+  total: number;
+  new: number;
+  published: number;
+}
+
 export default function AdminNewsPage() {
   const { user, status } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<FetchResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   
   // Check if user is admin

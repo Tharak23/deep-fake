@@ -109,7 +109,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
         // Extract provider data if available
         const providerData = userObj.providerData || 
-          // @ts-ignore - Session user might have providerData in some auth configurations
+          // @ts-expect-error - Session user might have providerData in some auth configurations
           (session.user.providerData as ProviderData[] | undefined) || 
           [];
         
@@ -167,7 +167,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fallbackToSessionData = () => {
     console.log("Falling back to session data:", session?.user);
     if (session?.user) {
-      // @ts-ignore - Session user might have providerData in some auth configurations
+      // @ts-expect-error - Session user might have providerData in some auth configurations
       const providerData = (session.user.providerData as ProviderData[] | undefined) || [];
       
       // Use type assertion to access extended session properties

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FiMail, FiLock, FiAlertCircle } from 'react-icons/fi';
@@ -8,7 +8,18 @@ import { FcGoogle } from 'react-icons/fc';
 import Link from 'next/link';
 import { RiAiGenerate } from 'react-icons/ri';
 
-const SignInPage = () => {
+// Loading fallback for suspense
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#0f172a] flex items-center justify-center p-4">
+      <div className="max-w-md w-full text-center">
+        <h1 className="text-3xl font-bold text-white mb-6">Loading...</h1>
+      </div>
+    </div>
+  );
+}
+
+const SignInContent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -72,8 +83,8 @@ const SignInPage = () => {
       setTimeout(() => {
         router.push(callbackUrl);
       }, 1500);
-    } catch (err: any) {
-      setError(err.message || 'An error occurred during sign in');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred during sign in');
     } finally {
       setLoading(false);
     }
@@ -227,6 +238,14 @@ const SignInPage = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const SignInPage = () => {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <SignInContent />
+    </Suspense>
   );
 };
 

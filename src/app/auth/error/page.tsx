@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiAlertTriangle, FiArrowLeft } from 'react-icons/fi';
 import { RiAiGenerate } from 'react-icons/ri';
 
-export default function AuthError() {
+function ErrorContent() {
   const searchParams = useSearchParams();
   const [error, setError] = useState<string>('');
   
@@ -102,5 +102,24 @@ export default function AuthError() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Loading fallback for suspense
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0a0a0a] to-[#0f172a] flex items-center justify-center p-4">
+      <div className="max-w-md w-full text-center">
+        <h1 className="text-3xl font-bold text-white mb-6">Loading...</h1>
+      </div>
+    </div>
+  );
+}
+
+export default function AuthError() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ErrorContent />
+    </Suspense>
   );
 } 

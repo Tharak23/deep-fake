@@ -16,7 +16,7 @@ async function isAdmin(email: string) {
 }
 
 // Seed users API route
-export async function POST(req: NextRequest) {
+export async function POST() {
   try {
     // In production, you might want to add authentication
     // but for initial setup, we'll allow this to run without auth
@@ -53,5 +53,5 @@ export async function POST(req: NextRequest) {
 
 // Allow GET for easier access during development
 export async function GET(req: NextRequest) {
-  return await POST(req);
+  return await POST();
 } 

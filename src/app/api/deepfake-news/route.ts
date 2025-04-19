@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import ArticleService from '@/lib/services/articleService';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/lib/auth';
 
 /**
  * GET /api/deepfake-news
@@ -44,7 +42,7 @@ export async function GET(request: NextRequest) {
  * POST /api/deepfake-news
  * Fetches new articles from external APIs and stores them in the database
  */
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     // Fetch and store articles
     const result = await ArticleService.fetchAndStoreArticles();
