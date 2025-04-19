@@ -1,0 +1,28 @@
+This directory contains placeholder images for the research platform.
+
+In a production environment, you would replace these with actual images of team members, research papers, and other assets.
+
+For team member images, you should add:
+- team-member-1.jpg
+- team-member-2.jpg
+- team-member-3.jpg
+- team-member-4.jpg
+
+For research images, you should add:
+- research-facial.jpg
+- research-audio.jpg
+- research-temporal.jpg
+- research-fingerprinting.jpg
+
+For blog images, you should add:
+- blog-facial.jpg
+- blog-political.jpg
+- blog-audio.jpg
+
+For case study images, you should add:
+- case-political.jpg
+- case-celebrity.jpg
+- case-corporate.jpg
+
+For the deepfake detection demo, you should add:
+- deepfake-detection.png 
