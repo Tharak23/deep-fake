@@ -20,7 +20,7 @@ const BlogSection = () => {
         'Our team has developed a new approach using transformer-based architectures to detect facial manipulations with unprecedented accuracy.',
       image: '/placeholders/blog-facial.jpg',
       date: 'May 15, 2023',
-      author: 'Dr. Sarah Chen',
+      author: 'Dr. gagan aditya',
       category: 'Research',
     },
     {
