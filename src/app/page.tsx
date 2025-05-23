@@ -13,12 +13,15 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import AuthDebug from '@/components/AuthDebug';
+import DotGridBackground from '@/components/ui/DotGridBackground';
+import AnimatedWaveform from '@/components/ui/AnimatedWaveform';
 
 export default function Home() {
   const { user, status } = useAuth();
 
   return (
-    <main>
+    <main className="relative bg-black min-h-screen overflow-x-hidden">
+      <DotGridBackground />
       <Navbar />
       
       {/* Authentication Status Banner */}
@@ -47,16 +50,19 @@ export default function Home() {
         </div>
       )}
       
-      <Hero />
-      <StatsSection />
-      <ResearchSection />
-      <TeamSection />
-      <CaseStudySection />
-      <DemoSection />
-      <BlogSection />
-      <ContactSection />
-      <Footer />
-      <AuthDebug />
+      <div className="relative z-10">
+        <Hero />
+        <AnimatedWaveform />
+        <StatsSection />
+        <ResearchSection />
+        <TeamSection />
+        <CaseStudySection />
+        <DemoSection />
+        <BlogSection />
+        <ContactSection />
+        <Footer />
+        <AuthDebug />
+      </div>
     </main>
   );
 }
